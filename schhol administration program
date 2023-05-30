@@ -1,0 +1,65 @@
+def edit_student_details(self):
+        print('Sorry, this feature has not been added yet.')
+
+    def print_student_details(self):
+
+        student_id = input('Enter student ID: ')
+
+        lines = self.file_handler.get_students()
+        details_found = False
+
+        for line in lines:
+            details = line.split(', ')
+            if details[0] == student_id:
+                details_found = True
+                break
+
+        if details_found:
+
+            print('ID: ', details[0])
+            print('Surname: ', details[1])
+            print('Forename: ', details[2])
+            print('Date of birth: ', details[3])
+            print('Home address: ', details[4])
+            print('Home phone number: ', details[5])
+            print('Gender: ', details[6])
+            print('Tutor group: ', details[7])
+            print('School email address: ', details[8])
+
+        else:
+            print('Student ', student_id, ' could not be found.')
+
+
+if __name__ == '__main__':
+    Main()
+file.py:
+
+class File:
+
+    @staticmethod
+    def get_accounts():
+        with open('accounts.txt', 'r') as file:
+            return file.read().split('\n')
+
+    @staticmethod
+    def add_account(username, password):
+        with open('accounts.txt', 'a') as file:
+            file.write(username)
+            file.write(', ')
+            file.write(password)
+            file.write('\n')
+
+    @staticmethod
+    def get_students():
+        with open('student_details.txt', 'r') as file:
+            return file.read().split('\n')
+
+    @staticmethod
+    def add_student(student_details):
+        with open('student_details.txt', 'a') as file:
+            file.write(student_details)
+            file.write('\n')
+
+    @staticmethod
+    def remove_student(student_id):
+        pass
